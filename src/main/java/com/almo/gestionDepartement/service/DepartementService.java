@@ -62,4 +62,19 @@ public class DepartementService {
         }
         return departementDtoList;
     }
+
+    public Departement updateDepartement(UUID departementId, Departement departement) {
+        Departement existingDepartement = departementRepository.findById(departementId)
+                .orElseThrow(()->new RuntimeException(" Ce departement n'existe pas dans la BD"));
+        existingDepartement.setNomDepartement(departement.getNomDepartement());
+        existingDepartement.setNomChefDepartement(departement.getNomChefDepartement());
+        existingDepartement.setTelephone(departement.getTelephone());
+        existingDepartement.setEmail(departement.getEmail());
+        existingDepartement.setNombreFiliere(departement.getNombreFiliere());
+        existingDepartement.setNombreEnseignant(departement.getNombreEnseignant());
+        existingDepartement.setNombreEtudiant(departement.getNombreEtudiant());
+
+        return departementRepository.save(existingDepartement);
+    }
+
 }
