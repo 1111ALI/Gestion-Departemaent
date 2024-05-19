@@ -3,6 +3,8 @@ package com.almo.gestionDepartement.controllers;
 import com.almo.gestionDepartement.dtos.StudentDto;
 import com.almo.gestionDepartement.entity.Student;
 import com.almo.gestionDepartement.service.StudentService;
+import com.almo.gestionDepartement.service.impl.StudentServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +12,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/students/")
+@AllArgsConstructor
 public class StudentController {
-private final StudentService studentService;
+    private final StudentService studentService;
 
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
     // Recuperer tous les etudiants de la Table student dans la BD
     @GetMapping("get-all")
     public List<Student> getAllStudents (){

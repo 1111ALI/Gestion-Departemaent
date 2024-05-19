@@ -3,6 +3,7 @@ package com.almo.gestionDepartement.controllers;
 import com.almo.gestionDepartement.dtos.FiliereDto;
 import com.almo.gestionDepartement.entity.Filiere;
 import com.almo.gestionDepartement.service.FiliereService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +11,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/filieres/")
+@AllArgsConstructor
 public class FiliereController {
     private final FiliereService filiereService;
 
-    public FiliereController(FiliereService filiereService) {
-        this.filiereService = filiereService;
-    }
 
     // Recuperer toutes les filieres dans la BD
     @GetMapping("get-all")// GET http://localhost:8080/api/v1/departements/get-all
